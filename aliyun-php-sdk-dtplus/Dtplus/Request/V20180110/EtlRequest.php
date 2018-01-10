@@ -33,7 +33,32 @@ class EtlRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
+
 	private $bizCode;
 
+
 	private $ds;
+
+
+    public function getBizCode(){
+        return $this->bizCode;
+    }
+
+
+    public function setBizCode($bizCode){
+        $this->bizCode = $bizCode;
+        $this->queryParameters["bizCode"] = $bizCode;
+    }
+
+
+    public function getDs(){
+        return $this->ds;
+    }
+
+
+    public function setDs($ds){
+        $this->ds = $ds;
+        $this->queryParameters["ds"] = $ds;
+    }
+
 }

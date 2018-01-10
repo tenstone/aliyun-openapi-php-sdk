@@ -40,4 +40,50 @@ class TasksRequest extends \RpcAcsRequest
 	private $scnCode;
 
 	private $containImport;
+
+
+
+    public function getBizCode(){
+        return $this->bizCode;
+    }
+
+
+    public function setBizCode($bizCode){
+        $this->bizCode = $bizCode;
+        $this->queryParameters["bizCode"] = $bizCode;
+    }
+
+
+    public function getDs(){
+        return $this->ds;
+    }
+
+
+    public function setDs($ds){
+        $this->ds = $ds;
+        $this->queryParameters["ds"] = $ds;
+    }
+
+
+    public function getScnCode(){
+        $this->scnCode;
+    }
+
+
+    public function setScnCode($scnCode){
+        $this->scnCode = $scnCode;
+        $this->queryParameters["scnCode"] = $scnCode;
+    }
+
+
+    public function getContainImport(){
+        $this->containImport;
+    }
+
+
+    public function setContainImport($containImport){
+        $this->containImport = $containImport;
+        $this->queryParameters["containImport"] = $containImport;
+    }
+
 }

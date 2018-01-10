@@ -39,5 +39,39 @@ class UploadlogRequest extends \RpcAcsRequest
 
 	private $token;
 
+
+
+    public function getBusinessName(){
+        return $this->businessName;
+    }
+
+
+    public function setBusinessName($businessName){
+        $this->businessName = $businessName;
+        $this->queryParameters["businessName"] = $businessName;
+    }
+
+
+    public function getCustomerName(){
+        return $this->customerName;
+    }
+
+
+    public function setCustomerName($customerName){
+        $this->customerName = $customerName;
+        $this->queryParameters["customerName"] = $customerName;
+    }
+
+
+    public function getToken(){
+        return $this->token;
+    }
+
+
+    public function setToken($token){
+        $this->token = $token;
+        $this->queryParameters["token"] = $token;
+    }
+
 	
 }

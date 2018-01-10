@@ -47,4 +47,91 @@ class DoRecRequest extends \RpcAcsRequest
 	private $recnum;
 
 	private $start;
+
+	public function getBizCode(){
+	    return $this->bizCode;
+    }
+
+
+    public function setBizCode($bizCode){
+        $this->bizCode = $bizCode;
+        $this->queryParameters["bizCode"] = $bizCode;
+    }
+
+
+    public function getScnCode(){
+        $this->scnCode;
+    }
+
+
+    public function setScnCode($scnCode){
+        $this->scnCode = $scnCode;
+        $this->queryParameters["scnCode"] = $scnCode;
+    }
+
+
+    public function getUserId(){
+        $this->userId;
+    }
+
+
+    public function setUserId($userId){
+        $this->userId = $userId;
+        $this->queryParameters["userId"] = $userId;
+    }
+
+
+    public function getItemId(){
+        $this->userId;
+    }
+
+
+    public function setItemId($itemId){
+        $this->itemId = $itemId;
+        $this->queryParameters["itemId"] = $itemId;
+    }
+
+
+    public function getCategory(){
+        $this->category;
+    }
+
+
+    public function setCategory($category){
+        $this->category = $category;
+        $this->queryParameters["category"] = $category;
+    }
+
+
+    public function getClass(){
+        $this->class;
+    }
+
+
+    public function setClass($class){
+        $this->class = $class;
+        $this->queryParameters["class"] = $class;
+    }
+
+
+    public function getRecnum(){
+        $this->recnum;
+    }
+
+
+    public function setRecnum($recnum){
+        $this->recnum = $recnum;
+        $this->queryParameters["recnum"] = $recnum;
+    }
+
+
+    public function getStart(){
+        $this->start;
+    }
+
+
+    public function setStart($start){
+        $this->recnum = $start;
+        $this->queryParameters["start"] = $start;
+    }
 }

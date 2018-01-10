@@ -33,14 +33,74 @@ class StatusRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
+
 	private $taskId;
+
 
 	private $bizCode;
 
+
 	private $ds;
+
 
 	private $scnCode;
 
+
 	private $taskType;
+
+
+    public function getTaskId(){
+        return $this->taskId;
+    }
+
+
+    public function setTaskId($taskId){
+        $this->taskId = $taskId;
+        $this->queryParameters["taskId"] = $taskId;
+    }
+
+
+    public function getBizCode(){
+        return $this->bizCode;
+    }
+
+
+    public function setBizCode($bizCode){
+        $this->bizCode = $bizCode;
+        $this->queryParameters["bizCode"] = $bizCode;
+    }
+
+
+    public function getDs(){
+        return $this->ds;
+    }
+
+
+    public function setDs($ds){
+        $this->ds = $ds;
+        $this->queryParameters["ds"] = $ds;
+    }
+
+
+    public function getScnCode(){
+        $this->scnCode;
+    }
+
+
+    public function setScnCode($scnCode){
+        $this->scnCode = $scnCode;
+        $this->queryParameters["scnCode"] = $scnCode;
+    }
+
+
+    public function getTaskType(){
+        $this->taskType;
+    }
+
+
+    public function setTaskType($taskType){
+        $this->taskType = $taskType;
+        $this->queryParameters["taskType"] = $taskType;
+    }
 
 }
