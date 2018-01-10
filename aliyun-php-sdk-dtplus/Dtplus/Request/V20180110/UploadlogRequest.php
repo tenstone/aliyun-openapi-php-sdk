@@ -32,5 +32,12 @@ class UploadlogRequest extends \RpcAcsRequest
 		parent::__construct("Dtplus", "2018-01-10", "Uploadlog", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
+
+	private $businessName;
+
+	private $customerName;
+
+	private $token;
+
 	
 }

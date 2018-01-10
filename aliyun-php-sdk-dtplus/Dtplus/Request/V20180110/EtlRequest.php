@@ -32,5 +32,8 @@ class EtlRequest extends \RpcAcsRequest
 		parent::__construct("Dtplus", "2018-01-10", "Etl", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
-	
+
+	private $bizCode;
+
+	private $ds;
 }

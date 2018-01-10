@@ -32,5 +32,15 @@ class StatusRequest extends \RpcAcsRequest
 		parent::__construct("Dtplus", "2018-01-10", "Status", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
-	
+
+	private $taskId;
+
+	private $bizCode;
+
+	private $ds;
+
+	private $scnCode;
+
+	private $taskType;
+
 }

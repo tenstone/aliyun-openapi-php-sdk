@@ -31,5 +31,20 @@ class DoRecRequest extends \RpcAcsRequest
 		parent::__construct("Dtplus", "2018-01-10", "DoRec", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
-	
+
+	private $bizCode;
+
+	private $scnCode;
+
+	private $userId;
+
+	private $itemId;
+
+	private $category;
+
+	private $class;
+
+	private $recnum;
+
+	private $start;
 }

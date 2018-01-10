@@ -32,5 +32,12 @@ class TasksRequest extends \RpcAcsRequest
 		parent::__construct("Dtplus", "2018-01-10", "Tasks", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
-	
+
+	private $ds;
+
+	private $bizCode;
+
+	private $scnCode;
+
+	private $containImport;
 }
