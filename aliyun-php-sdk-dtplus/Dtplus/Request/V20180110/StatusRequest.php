@@ -30,7 +30,7 @@ class StatusRequest extends \RpcAcsRequest
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Status", "dtplus", "openAPI");
-		$this->setMethod("POST");
+		$this->setMethod("GET");
 	}
 
 
