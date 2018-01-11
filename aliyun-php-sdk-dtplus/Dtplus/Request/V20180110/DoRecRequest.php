@@ -26,27 +26,40 @@ namespace Dtplus\Request\V20180110;
  */
 class DoRecRequest extends \RpcAcsRequest
 {
+
+
+    private $bizCode;
+
+    private $scnCode;
+
+    private $userId;
+
+    private $itemId;
+
+    private $category;
+
+    private $class;
+
+    private $recnum;
+
+    private $start;
+
+    private $httpMethod = "POST";
+
+
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "DoRec", "dtplus", "openAPI");
-		$this->setMethod("POST");
+
+		$this->setMethod($this->httpMethod);
+
+		//prepare for data plus signature
+		$this->addHeader("Accept","application/json");
+
+		$this->addHeader("Content-Type","application/json");
+
+		$this->addHeader('Date', gmdate('D, d M Y H:i:s T'));
 	}
-
-	private $bizCode;
-
-	private $scnCode;
-
-	private $userId;
-
-	private $itemId;
-
-	private $category;
-
-	private $class;
-
-	private $recnum;
-
-	private $start;
 
 	public function getBizCode(){
 	    return $this->bizCode;

@@ -31,6 +31,7 @@ class TasksRequest extends \RpcAcsRequest
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Tasks", "dtplus", "openAPI");
 		$this->setMethod("POST");
+		$this->addHeader("x-dataplus-timeout","60000");
 	}
 
 	private $ds;
