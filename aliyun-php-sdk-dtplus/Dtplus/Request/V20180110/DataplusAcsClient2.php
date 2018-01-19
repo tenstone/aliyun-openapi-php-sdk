@@ -8,7 +8,7 @@
 
 namespace Dtplus\Request\V20180110;
 
-class DataplusProfile extends \DefaultProfile
+class DataplusAcsClient extends \DefaultAcsClient
 {
 
     private $dplusHost;
@@ -84,6 +84,10 @@ class DataplusProfile extends \DefaultProfile
     public function getQueryParameters()
     {
         return $this->queryParameters;
+    }
+
+    public function doAction(){
+        $this->buildHeaders();
     }
 
     public function addHeader($headerKey, $headerValue)
