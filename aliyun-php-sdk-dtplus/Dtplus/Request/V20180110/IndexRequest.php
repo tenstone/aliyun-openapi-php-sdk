@@ -26,6 +26,13 @@ namespace Dtplus\Request\V20180110;
  */
 class IndexRequest extends \RpcAcsRequest
 {
+    private $bizCode;
+
+
+    private $ds;
+
+
+    private $path = "/re/index";
 
 	function  __construct()
 	{
@@ -35,10 +42,7 @@ class IndexRequest extends \RpcAcsRequest
 	}
 
 
-	private $bizCode;
 
-
-	private $ds;
 
 
     public function getBizCode(){

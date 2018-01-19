@@ -18,6 +18,7 @@
  * under the License.
  */
 namespace Dtplus\Request\V20180110;
+use Dtplus\Request\V20180110\DataPlusSigner;
 /**
  * Recommend
  *
@@ -46,6 +47,8 @@ class DoRecRequest extends \RpcAcsRequest
 
     private $httpMethod = "POST";
 
+    private $path = "/re/doRec";
+
 
 	function  __construct()
 	{
@@ -55,10 +58,11 @@ class DoRecRequest extends \RpcAcsRequest
 
 		//prepare for data plus signature
 		$this->addHeader("Accept","application/json");
-
 		$this->addHeader("Content-Type","application/json");
-
-		$this->addHeader('Date', gmdate('D, d M Y H:i:s T'));
+		$this->addHeader("Content-Encoding","gzip");
+		$this->addHeader('Date', gmdate("D, d M Y H:i:s \G\M\T"));
+		$this->addHeader('Authorization',
+            DataPlusSigner::getSignature('',$this->getHeaders(),''));
 	}
 
 	public function getBizCode(){

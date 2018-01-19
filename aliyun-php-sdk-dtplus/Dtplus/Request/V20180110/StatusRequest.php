@@ -27,27 +27,28 @@ namespace Dtplus\Request\V20180110;
 class StatusRequest extends \RpcAcsRequest
 {
 
+    private $taskId;
+
+
+    private $bizCode;
+
+
+    private $ds;
+
+
+    private $scnCode;
+
+
+    private $taskType;
+
+
+    private $path = "/re/status";
+
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Status", "dtplus", "openAPI");
 		$this->setMethod("GET");
 	}
-
-
-	private $taskId;
-
-
-	private $bizCode;
-
-
-	private $ds;
-
-
-	private $scnCode;
-
-
-	private $taskType;
-
 
     public function getTaskId(){
         return $this->taskId;

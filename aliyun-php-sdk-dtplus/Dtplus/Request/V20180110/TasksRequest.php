@@ -27,22 +27,23 @@ namespace Dtplus\Request\V20180110;
 class TasksRequest extends \RpcAcsRequest
 {
 
+
+    private $ds;
+
+    private $bizCode;
+
+    private $scnCode;
+
+    private $containImport;
+
+    private $path = "/re/tasks";
+
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Tasks", "dtplus", "openAPI");
 		$this->setMethod("POST");
 		$this->addHeader("x-dataplus-timeout","60000");
 	}
-
-	private $ds;
-
-	private $bizCode;
-
-	private $scnCode;
-
-	private $containImport;
-
-
 
     public function getBizCode(){
         return $this->bizCode;

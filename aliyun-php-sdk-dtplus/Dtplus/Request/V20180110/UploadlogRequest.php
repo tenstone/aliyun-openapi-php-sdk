@@ -27,17 +27,21 @@ namespace Dtplus\Request\V20180110;
 class UploadlogRequest extends \RpcAcsRequest
 {
 
+
+    private $businessName;
+
+    private $customerName;
+
+    private $token;
+
+    private $path = "/re/uploadlog";
+
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Uploadlog", "dtplus", "openAPI");
 		$this->setMethod("POST");
 	}
 
-	private $businessName;
-
-	private $customerName;
-
-	private $token;
 
 
 
