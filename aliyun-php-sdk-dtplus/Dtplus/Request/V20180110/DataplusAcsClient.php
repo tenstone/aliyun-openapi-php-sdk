@@ -8,7 +8,7 @@
 
 namespace Dtplus\Request\V20180110;
 
-class DataplusClient extends \DefaultAcsClient
+class DataplusAcsClient extends \DefaultAcsClient
 {
 
     private $dplusHost;
@@ -18,7 +18,6 @@ class DataplusClient extends \DefaultAcsClient
     private $signature;
 
     private $dplusOrgCode;
-    private $token;
     private $accessId;
     private $accessSecret;
 
