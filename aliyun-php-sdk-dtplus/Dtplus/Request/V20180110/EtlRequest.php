@@ -29,10 +29,9 @@ class EtlRequest extends \RpcAcsRequest
 
     private $bizCode;
 
-
     private $ds;
 
-    private $path = "/re/etl";
+    public $path = "/re/etl";
 
 	function  __construct()
 	{

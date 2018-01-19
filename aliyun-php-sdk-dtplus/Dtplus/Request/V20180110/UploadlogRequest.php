@@ -34,7 +34,7 @@ class UploadlogRequest extends \RpcAcsRequest
 
     private $token;
 
-    private $path = "/re/uploadlog";
+    public $path = "/re/uploadlog";
 
 	function  __construct()
 	{

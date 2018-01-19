@@ -42,7 +42,7 @@ class StatusRequest extends \RpcAcsRequest
     private $taskType;
 
 
-    private $path = "/re/status";
+    public $path = "/re/status";
 
 	function  __construct()
 	{

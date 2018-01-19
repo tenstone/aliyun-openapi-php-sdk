@@ -36,7 +36,7 @@ class TasksRequest extends \RpcAcsRequest
 
     private $containImport;
 
-    private $path = "/re/tasks";
+    public $path = "/re/tasks";
 
 	function  __construct()
 	{

@@ -32,7 +32,7 @@ class IndexRequest extends \RpcAcsRequest
     private $ds;
 
 
-    private $path = "/re/index";
+    public $path = "/re/index";
 
 	function  __construct()
 	{
