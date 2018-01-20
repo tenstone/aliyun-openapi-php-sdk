@@ -51,6 +51,7 @@ class DoRecRequest extends \RpcAcsRequest
 
 	function  __construct()
 	{
+        parent::__construct("Dtplus", "2018-01-10", "DoRec", "dtplus", "openAPI");
 		$this->setMethod($this->httpMethod);
 	}
 

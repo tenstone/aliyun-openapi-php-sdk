@@ -36,6 +36,7 @@ class UploadlogRequest extends \RpcAcsRequest
 
     public $path = "/re/uploadlog";
 
+
 	function  __construct()
 	{
 		parent::__construct("Dtplus", "2018-01-10", "Uploadlog", "dtplus", "openAPI");
