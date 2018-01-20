@@ -12,7 +12,6 @@ class DataplusClient
 {
 
     private $dplusHost;
-    private $apiPath;
     private $query;
     private $signature;
 
@@ -31,18 +30,12 @@ class DataplusClient
         $this->accessId = $accessId;
         $this->accessSecret = $accessSecret;
         $this->dplusOrgCode = $dplusOrgCode;
-        if($content == ''){
-            $this->content = $content;
-        }else{
-            $this->content = json_encode($content);
-        }
+        $this->content = $content;
 
         if($overLan){
-            $this->dplusHost = "://dtplus-lan-cn-shanghai.data.aliyuncs.com";
+            $this->dplusHost = "dtplus-lan-cn-shanghai.data.aliyuncs.com";
         }
-        $this->dplusHost = "://dtplus-cn-shanghai.data.aliyuncs.com";
-
-        $this->apiPath = "{$this->dplusHost}/{$this->dplusOrgCode}";
+        $this->dplusHost = "dtplus-cn-shanghai.data.aliyuncs.com";
         $this->queryParameters = array();
     }
 
@@ -66,8 +59,7 @@ class DataplusClient
             throw new \Exception('request cannot be null.');
         }
         $this->query = http_build_query($this->request->getQueryParameters());
-        $requestPath = $this->request->getProtocol().$this->apiPath .$this->request->path;
-        return empty($this->query) ? $requestPath : $requestPath.'?'. $this->query;
+        return empty($this->query) ? $this->request->path : $this->request->path.'?'. $this->query;
     }
 
     /**
@@ -77,17 +69,14 @@ class DataplusClient
      * @return
      */
      private function computeSignature(){
+         $this->content = gzencode(json_encode($this->content));
         if (empty($this->content)) {
             $bodymd5 = $this->content;
         } else {
             $bodymd5 = base64_encode(md5($this->content, true));
         }
-        print "bodymd5: ".$bodymd5."\n";
         $stringToSign = $this->request->getMethod() . "\n" . $this->headers['Accept'] . "\n" . $bodymd5 . "\n". $this->headers['Content-Type'] .
             "\n" . $this->headers['Date'] . "\n" . $this->getRequestUrl();
-        print "stringToSign :".$stringToSign."\n";
-        print "accessId:".$this->accessId."\n";
-        print "accessSecret:".$this->accessSecret."\n";
         $this->signature = base64_encode(hash_hmac("sha1", $stringToSign, $this->accessSecret, true));
     }
 
@@ -99,17 +88,14 @@ class DataplusClient
             array_keys($this->headers),
             $this->headers
         );
-        print "Header:";
-        print_r($headers);
-        print "\n";
         $curl_opt = array(
-            CURLOPT_URL => $this->getRequestUrl(),
+            CURLOPT_URL => $this->request->getProtocol().'://'.$this->dplusHost.$this->getRequestUrl(),
             CURLOPT_RETURNTRANSFER => 1,
             CURLOPT_HTTPHEADER => $headers
         );
         if ($this->request->getMethod() == 'POST') {
             $curl_opt[CURLOPT_POST] = true;
-            $curl_opt[CURLOPT_POSTFIELDS] = gzencode($this->content);
+            $curl_opt[CURLOPT_POSTFIELDS] = $this->content;
         } else {
             $curl_opt[CURLOPT_HTTPGET] = true;
         }
