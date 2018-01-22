@@ -69,9 +69,9 @@ class DataplusClient
      * @return
      */
      private function computeSignature(){
-         $this->content = gzencode(json_encode($this->content));
+        $this->content = gzencode(json_encode($this->content));
         if (empty($this->content)) {
-            $bodymd5 = $this->content;
+            $bodymd5 = json_encode($this->content);
         } else {
             $bodymd5 = base64_encode(md5($this->content, true));
         }

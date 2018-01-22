@@ -44,8 +44,6 @@ class UploadlogRequest extends \RpcAcsRequest
 	}
 
 
-
-
     public function getBusinessName(){
         return $this->businessName;
     }
@@ -77,6 +75,5 @@ class UploadlogRequest extends \RpcAcsRequest
         $this->token = $token;
         $this->queryParameters["token"] = $token;
     }
-
 	
 }

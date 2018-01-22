@@ -44,15 +44,13 @@ class DoRecRequest extends \RpcAcsRequest
 
     private $start;
 
-    protected $method = "POST";
-
     public $path = "/re/doRec";
 
 
 	function  __construct()
 	{
         parent::__construct("Dtplus", "2018-01-10", "DoRec", "dtplus", "openAPI");
-		$this->setMethod($this->httpMethod);
+		$this->setMethod('POST');
 	}
 
 	public function getBizCode(){
