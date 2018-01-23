@@ -50,7 +50,7 @@ class DoRecRequest extends \RpcAcsRequest
 	function  __construct()
 	{
         parent::__construct("Dtplus", "2018-01-10", "DoRec", "dtplus", "openAPI");
-		$this->setMethod('POST');
+		$this->setMethod('GET');
 	}
 
 	public function getBizCode(){
@@ -139,4 +139,5 @@ class DoRecRequest extends \RpcAcsRequest
         $this->recnum = $start;
         $this->queryParameters["start"] = $start;
     }
+
 }

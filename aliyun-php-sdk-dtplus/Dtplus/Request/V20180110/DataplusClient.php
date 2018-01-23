@@ -23,14 +23,13 @@ class DataplusClient
 
     protected $queryParameters;
     private $request;
-    private $content;
+    private $requestBody;
 
-    function __construct($accessId,$accessSecret, $dplusOrgCode,$content='',$overLan=false)
+    function __construct($accessId,$accessSecret, $dplusOrgCode,$overLan=false)
     {
         $this->accessId = $accessId;
         $this->accessSecret = $accessSecret;
         $this->dplusOrgCode = $dplusOrgCode;
-        $this->content = $content;
 
         if($overLan){
             $this->dplusHost = "dtplus-lan-cn-shanghai.data.aliyuncs.com";
@@ -41,6 +40,10 @@ class DataplusClient
 
     protected function setRequest($request){
         $this->request = $request;
+    }
+
+    protected function getPostParameters(){
+        return $this->postParameters;
     }
 
     protected function buildHeaders(){
@@ -69,11 +72,12 @@ class DataplusClient
      * @return
      */
      private function computeSignature(){
-        $this->content = gzencode(json_encode($this->content));
-        if (empty($this->content)) {
-            $bodymd5 = json_encode($this->content);
+
+        if (empty($this->requestBody)) {
+            $bodymd5 = '';
         } else {
-            $bodymd5 = base64_encode(md5($this->content, true));
+            $this->requestBody = gzencode(json_encode($this->requestBody));
+            $bodymd5 = base64_encode(md5($this->requestBody, true));
         }
         $stringToSign = $this->request->getMethod() . "\n" . $this->headers['Accept'] . "\n" . $bodymd5 . "\n". $this->headers['Content-Type'] .
             "\n" . $this->headers['Date'] . "\n" . $this->getRequestUrl();
@@ -95,7 +99,7 @@ class DataplusClient
         );
         if ($this->request->getMethod() == 'POST') {
             $curl_opt[CURLOPT_POST] = true;
-            $curl_opt[CURLOPT_POSTFIELDS] = $this->content;
+            $curl_opt[CURLOPT_POSTFIELDS] = $this->requestBody;
         } else {
             $curl_opt[CURLOPT_HTTPGET] = true;
         }
@@ -106,8 +110,13 @@ class DataplusClient
         return $res;
     }
 
+    function setRequestBody(){
+        $this->requestBody = $this->request->getContent();
+    }
+
     public function getResponse($request){
         $this->setRequest($request);
+        $this->setRequestBody();
         $this->buildHeaders();
         return $this->httpRequest();
     }

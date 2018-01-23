@@ -49,7 +49,7 @@ class EtlRequest extends \RpcAcsRequest
 
     public function setBizCode($bizCode){
         $this->bizCode = $bizCode;
-        $this->queryParameters["bizCode"] = $bizCode;
+        $this->content["bizCode"] = $bizCode;
     }
 
 
@@ -60,7 +60,7 @@ class EtlRequest extends \RpcAcsRequest
 
     public function setDs($ds){
         $this->ds = $ds;
-        $this->queryParameters["ds"] = $ds;
+        $this->content["ds"] = $ds;
     }
 
 }

@@ -52,7 +52,7 @@ class TasksRequest extends \RpcAcsRequest
 
     public function setBizCode($bizCode){
         $this->bizCode = $bizCode;
-        $this->queryParameters["bizCode"] = $bizCode;
+        $this->content["bizCode"] = $bizCode;
     }
 
 
@@ -63,7 +63,7 @@ class TasksRequest extends \RpcAcsRequest
 
     public function setDs($ds){
         $this->ds = $ds;
-        $this->queryParameters["ds"] = $ds;
+        $this->content["ds"] = $ds;
     }
 
 
@@ -74,7 +74,7 @@ class TasksRequest extends \RpcAcsRequest
 
     public function setScnCode($scnCode){
         $this->scnCode = $scnCode;
-        $this->queryParameters["scnCode"] = $scnCode;
+        $this->content["scnCode"] = $scnCode;
     }
 
 
@@ -85,7 +85,7 @@ class TasksRequest extends \RpcAcsRequest
 
     public function setContainImport($containImport){
         $this->containImport = $containImport;
-        $this->queryParameters["containImport"] = $containImport;
+        $this->content["containImport"] = $containImport;
     }
 
 }
