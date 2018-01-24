@@ -21,7 +21,7 @@ namespace Dtplus\Request\V20180110;
 /**
  * Status Query
  *
- * Class StatusRequest
+ * Class StatusRequestt
  * @package Dtplus\Request\V20180110
  */
 class StatusRequest extends \RpcAcsRequest

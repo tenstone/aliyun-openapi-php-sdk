@@ -41,7 +41,6 @@ class EtlRequest extends \RpcAcsRequest
 	}
 
 
-
     public function getBizCode(){
         return $this->bizCode;
     }
