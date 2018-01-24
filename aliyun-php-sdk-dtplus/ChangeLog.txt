@@ -1,4 +1,4 @@
 2018-01-10 Version: 1.0.0
-1, Alibaba Cloud Intelligent Dtplus SDK initial release.
+1, 创建项目，基于数加API3.0封装，采用数加鉴权和API规范
 
 
