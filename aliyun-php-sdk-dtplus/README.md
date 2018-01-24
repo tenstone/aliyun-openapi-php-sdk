@@ -1,6 +1,6 @@
 # 介绍
 ## 当前版本局限
-数加平台的接口规范与阿里云OpenAPI不同，此版本（V20180110）DataplusClient重新实现了aliyun-php-sdk-core的某些功能。
+数加平台的接口规范与阿里云OpenAPI不同，此版本（V20180110）在DataplusClient类中重新实现了aliyun-php-sdk-core的某些功能，待未来数加API纳入阿里云OpenAPI体系后，会按OpenAPI规范重新实现。
 
 ## 代码示例
 
