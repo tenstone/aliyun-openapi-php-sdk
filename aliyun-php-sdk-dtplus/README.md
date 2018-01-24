@@ -21,7 +21,7 @@ function testUpdatelog(){
         json_encode(array("action" => "item", "item_id" => "1", "category" =>"1")),
         json_encode(array("action" => "click", "user_id" => "0", "item_id" =>"0")),
     );
-    $client = new Dtplus\DataplusClient($ak_id, $ak_secret,$dplusOrgCode);
+    $client = new Dtplus\DataplusClient($ak_id, $ak_secret,$dplusOrgCode,$overLan=false);
     $request->setBusinessName('recommend');
     $request->setCustomerName('movie_recommend');
     $request->setToken('alidata91c57337f6d0d84f677d2e3ac');

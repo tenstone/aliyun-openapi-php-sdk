@@ -400,7 +400,6 @@
             <Product><ProductName>Oss</ProductName><DomainName>oss-cn-shanghai.aliyuncs.com</DomainName></Product>
             <Product><ProductName>YundunDdos</ProductName><DomainName>inner-yundun-ddos.cn-hangzhou.aliyuncs.com</DomainName></Product>
             <Product><ProductName>vod</ProductName><DomainName>vod.cn-shanghai.aliyuncs.com</DomainName></Product>
-            <Product><ProductName>Dtplus</ProductName><DomainName>dtplus-cn-shanghai.data.aliyuncs.com</DomainName></Product>
         </Products>
     </Endpoint>
     <Endpoint name="cn-shenzhen-inner">
@@ -627,7 +626,6 @@
             <Product><ProductName>Alidns</ProductName><DomainName>alidns.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Ons</ProductName><DomainName>ons.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Cdn</ProductName><DomainName>cdn.aliyuncs.com</DomainName></Product>
-            <Product><ProductName>Dtplus</ProductName><DomainName>dtplus-lan-cn-shanghai.data.aliyuncs.com</DomainName></Product>
         </Products>
     </Endpoint>
     <Endpoint name="cn-anhui-gov-1">
