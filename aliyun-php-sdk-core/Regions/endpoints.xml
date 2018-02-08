@@ -384,6 +384,7 @@
             <Product><ProductName>HighDDos</ProductName><DomainName>yd-highddos-cn-hangzhou.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Jaq</ProductName><DomainName>jaq.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Cms</ProductName><DomainName>metrics.cn-hangzhou.aliyuncs.com</DomainName></Product>
+            <Product><ProductName>MetrichubCms</ProductName><DomainName>metrichub-cms-cn-hangzhou.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Slb</ProductName><DomainName>slb.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Crm</ProductName><DomainName>crm-cn-hangzhou.aliyuncs.com</DomainName></Product>
             <Product><ProductName>Domain</ProductName><DomainName>domain.aliyuncs.com</DomainName></Product>
