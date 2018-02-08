@@ -43,6 +43,8 @@ class ModifyPrepayInstanceSpecRequest extends \RpcAcsRequest
 
 	private  $ownerId;
 
+	private  $operatorType;
+
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;
 	}
@@ -113,6 +115,15 @@ class ModifyPrepayInstanceSpecRequest extends \RpcAcsRequest
 	public function setOwnerId($ownerId) {
 		$this->ownerId = $ownerId;
 		$this->queryParameters["OwnerId"]=$ownerId;
+	}
+
+	public function getOperatorType() {
+		return $this->operatorType;
+	}
+
+	public function setOperatorType($operatorType) {
+		$this->operatorType = $operatorType;
+		$this->queryParameters["OperatorType"]=$operatorType;
 	}
 	
 }

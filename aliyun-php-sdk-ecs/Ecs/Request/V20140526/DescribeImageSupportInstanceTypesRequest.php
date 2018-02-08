@@ -27,6 +27,10 @@ class DescribeImageSupportInstanceTypesRequest extends \RpcAcsRequest
 		$this->setMethod("POST");
 	}
 
+	private  $actionType;
+
+	private  $Filters;
+
 	private  $resourceOwnerId;
 
 	private  $imageId;
@@ -34,6 +38,28 @@ class DescribeImageSupportInstanceTypesRequest extends \RpcAcsRequest
 	private  $resourceOwnerAccount;
 
 	private  $ownerId;
+
+	public function getActionType() {
+		return $this->actionType;
+	}
+
+	public function setActionType($actionType) {
+		$this->actionType = $actionType;
+		$this->queryParameters["ActionType"]=$actionType;
+	}
+
+	public function getFilters() {
+		return $this->Filters;
+	}
+
+	public function setFilters($Filters) {
+		$this->Filters = $Filters;
+		for ($i = 0; $i < count($Filters); $i ++) {	
+			$this->queryParameters['Filter.' . ($i + 1) . '.Key'] = $Filters[$i]['Key'];
+			$this->queryParameters['Filter.' . ($i + 1) . '.Value'] = $Filters[$i]['Value'];
+
+		}
+	}
 
 	public function getResourceOwnerId() {
 		return $this->resourceOwnerId;

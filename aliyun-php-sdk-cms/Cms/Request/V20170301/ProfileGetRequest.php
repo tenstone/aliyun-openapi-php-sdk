@@ -24,6 +24,7 @@ class ProfileGetRequest extends \RpcAcsRequest
 	function  __construct()
 	{
 		parent::__construct("Cms", "2017-03-01", "ProfileGet", "cms", "openAPI");
+		$this->setMethod("POST");
 	}
 
 	private  $userId;

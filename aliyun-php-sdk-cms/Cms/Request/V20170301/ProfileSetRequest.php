@@ -29,6 +29,8 @@ class ProfileSetRequest extends \RpcAcsRequest
 
 	private  $enableInstallAgentNewECS;
 
+	private  $enableActiveAlert;
+
 	private  $autoInstall;
 
 	private  $userId;
@@ -40,6 +42,15 @@ class ProfileSetRequest extends \RpcAcsRequest
 	public function setEnableInstallAgentNewECS($enableInstallAgentNewECS) {
 		$this->enableInstallAgentNewECS = $enableInstallAgentNewECS;
 		$this->queryParameters["EnableInstallAgentNewECS"]=$enableInstallAgentNewECS;
+	}
+
+	public function getEnableActiveAlert() {
+		return $this->enableActiveAlert;
+	}
+
+	public function setEnableActiveAlert($enableActiveAlert) {
+		$this->enableActiveAlert = $enableActiveAlert;
+		$this->queryParameters["EnableActiveAlert"]=$enableActiveAlert;
 	}
 
 	public function getAutoInstall() {
