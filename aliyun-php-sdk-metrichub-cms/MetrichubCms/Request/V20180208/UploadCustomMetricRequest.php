@@ -21,16 +21,19 @@ namespace MetrichubCms\Request\V20180208;
 
 class UploadCustomMetricRequest extends \RpcAcsRequest
 {
+    # http://php.net/manual/zh/class.iteratoraggregate.php
+    # http://docs.amazonaws.cn/AWSEC2/latest/WindowsGuide/GetSingleMetricAllDimensions.html 聚合
+
 	function  __construct()
 	{
 		parent::__construct("MetrichubCms", "2018-02-08", "UploadCustomMetric", "metrichub-cms", "openAPI");
+		$this->setMethod('POST');
+		$this->setPath('/metric/custom/upload');
 	}
 
     private $groupId;
 
 	private $metricName;
-
-	private $dimensions;
 
 	private $time;
 
@@ -38,7 +41,9 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
 	private $period;
 
-	private $values;
+    private $dimensions;
+
+    private $values;
 
 
     public function getGroupId() {
@@ -47,7 +52,6 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
     public function setGroupId($groupId) {
         $this->groupId = $groupId;
-        $this->queryParameters["GroupId"]=$groupId;
     }
 
     public function getMetricName() {
@@ -56,18 +60,11 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
     public function setMetricName($metricName) {
         $this->metricName = $metricName;
-        $this->queryParameters["metricName"]=$metricName;
     }
 
     public function getDimensions() {
         return $this->dimensions;
     }
-
-    public function setDimensions($dimensions) {
-        $this->dimensions = $dimensions;
-        $this->queryParameters["dimensions"]=$dimensions;
-    }
-
 
     public function getTime() {
         return $this->time;
@@ -75,9 +72,7 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
     public function setTime($time) {
         $this->dimensions = $time;
-        $this->queryParameters["time"]=$time;
     }
-
 
     public function getType() {
         return $this->type;
@@ -85,7 +80,6 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
     public function setType($type) {
         $this->dimensions = $type;
-        $this->queryParameters["type"]=$type;
     }
 
     public function getPeriod(){
@@ -94,7 +88,6 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 
     public function setPeriod($period){
         $this->period = $period;
-        $this->queryParameters["period"]=$period;
     }
 
 
@@ -103,7 +96,38 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
     }
 
     public function setValues($values){
-        $this->period = $values;
-        $this->queryParameters["values"]=$values;
+        $this->values = $values;
+    }
+
+    public function setDimensions($dimensions) {
+        $this->dimensions = $dimensions;
+    }
+
+    public function appendValue($value){
+        array_push($this->values,$value);
+    }
+
+    public function appendDimension($dimension) {
+        array_push($this->dimensions, $dimension);
+    }
+
+    public function build() {
+        $buildData = json_encode(array(
+            "groupId"=>$this->getGroupId(),
+            "metricName"=>$this->getMetricName(),
+            "dimensions"=>$this->getDimensions(),
+            "time"=>$this->getTime(),
+            "type"=>$this->getType(),
+            "period"=>$this->getPeriod(),
+            "values"=>$this->getValues()
+        ));
+        $this->setContent($buildData);
+        $this->addHeader('Content-Type','application/json');
+        $this->addHeader('Content-MD5',strtoupper(md5($buildData)));
+        $this->addHeader('Authorization','LTAIsk0qFRkhyL2Q:xi7FP7EFafFV3CNUO0G2HAOzvSRAPi');
+        $this->addHeader('Date',gmdate("D, d M Y H:i:s \G\M\T"));
+        $this->addHeader('x-cms-api-version','1.0');
+        $this->addHeader('x-cms-signature','hmac-sha1');
+        $this->addHeader('x-cms-ip','127.0.0.1');
     }
 }

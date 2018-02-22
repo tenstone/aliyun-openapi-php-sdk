@@ -67,7 +67,7 @@ abstract class RpcAcsRequest extends AcsRequest
         }
         $apiParams["Signature"] = $this->computeSignature($apiParams, $credential->getAccessSecret(), $iSigner);
         if (parent::getMethod() == "POST") {
-            $requestUrl = $this->getProtocol()."://". $domain . "/";
+            $requestUrl = $this->getProtocol()."://". $domain . "/".$this->getPath();
             foreach ($apiParams as $apiParamKey => $apiParamValue) {
                 $this->putDomainParameters($apiParamKey, $apiParamValue);
             }
