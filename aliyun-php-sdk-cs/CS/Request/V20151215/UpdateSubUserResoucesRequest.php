@@ -17,38 +17,15 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-namespace CCC\Request\V20170705;
+namespace CS\Request\V20151215;
 
-class RemoveUsersRequest extends \RpcAcsRequest
+class UpdateSubUserResoucesRequest extends \RoaAcsRequest
 {
 	function  __construct()
 	{
-		parent::__construct("CCC", "2017-07-05", "RemoveUsers", "ccc", "openAPI");
+		parent::__construct("CS", "2015-12-15", "UpdateSubUserResouces");
+		$this->setUriPattern("/ram/resources");
 		$this->setMethod("POST");
-	}
-
-	private  $instanceId;
-
-	private  $UserIds;
-
-	public function getInstanceId() {
-		return $this->instanceId;
-	}
-
-	public function setInstanceId($instanceId) {
-		$this->instanceId = $instanceId;
-		$this->queryParameters["InstanceId"]=$instanceId;
-	}
-
-	public function getUserIds() {
-		return $this->UserIds;
-	}
-
-	public function setUserIds($UserIds) {
-		$this->UserIds = $UserIds;
-		for ($i = 0; $i < count($UserIds); $i ++) {	
-			$this->queryParameters["UserId.".($i+1)] = $UserIds[$i];
-		}
 	}
 	
 }
