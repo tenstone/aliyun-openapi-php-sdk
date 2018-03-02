@@ -21,10 +21,15 @@ namespace MetrichubCms\Request\V20180208;
 
 class UploadCustomMetricRequest extends \RpcAcsRequest
 {
+    public $path;
+
 	function  __construct()
 	{
 		parent::__construct("MetrichubCms", "2018-02-08", "UploadCustomMetric", "metrichub-cms", "openAPI");
-	}
+        $this->path = "/metric/custom/upload";
+        $this->setMethod('POST');
+        $this->setContent('[{"groupId":101,"metricName":"","dimensions":{"sampleName1":"value1","sampleName2":"value2"},"time":"","type":0,"period":60,"values":{"value":10.5,"Sum":100}}]');
+    }
 
     private $groupId;
 

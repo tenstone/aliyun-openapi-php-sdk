@@ -42,6 +42,7 @@ Autoloader::addAutoloadPath("aliyun-php-sdk-slb");
 Autoloader::addAutoloadPath("aliyun-php-sdk-cms");
 Autoloader::addAutoloadPath("aliyun-php-sdk-idst");
 Autoloader::addAutoloadPath("aliyun-php-sdk-dtplus");
+Autoloader::addAutoloadPath("aliyun-php-sdk-metrichub-cms");
 
 //config http proxy
 define('ENABLE_HTTP_PROXY', false);
