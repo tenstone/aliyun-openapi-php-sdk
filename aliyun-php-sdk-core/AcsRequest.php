@@ -27,6 +27,7 @@ abstract class AcsRequest
 	protected  $method;
 	protected  $protocolType = "http";
 	protected  $content;
+	protected  $path;
 	
 	protected $queryParameters = array();
 	protected $headers = array();
@@ -46,7 +47,15 @@ abstract class AcsRequest
 	}
 	
 	public abstract function composeUrl($iSigner, $credential, $domain);
-	
+
+	public function getPath(){
+        return $this->path;
+    }
+
+    public function setPath($path){
+        $this->path = ltrim($path,'/');
+    }
+
 	public function getVersion()
 	{
 		return $this->version;
