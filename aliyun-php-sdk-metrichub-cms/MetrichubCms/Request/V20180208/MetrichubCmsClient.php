@@ -33,16 +33,16 @@ class MetrichubCmsClient
 
     private $request;
 
-    protected $queryParameters;
+    protected $sourceIp;
 
 
-    function __construct($regionId, $accessId,$accessSecret)
+    function __construct($regionId, $accessId,$accessSecret,$sourceIp)
     {
         $this->accessId = $accessId;
         $this->accessSecret = $accessSecret;
 
-        $this->host = "metrichub-cms-cn-hangzhou.aliyuncs.com";
-        $this->queryParameters = array();
+        $this->host = "metrichub-cms-{$regionId}.aliyuncs.com";
+        $this->sourceIp = $sourceIp;
     }
 
     protected function setRequest($request){
@@ -54,15 +54,17 @@ class MetrichubCmsClient
     }
 
     private function computeSignature(){
-
+//        print $this->request->getContent();
+//        print "\n";
         $bodymd5 = strtoupper(md5($this->request->getContent()));
         $stringToSign = $this->request->getMethod() . "\n" .
             $bodymd5 . "\n".
             $this->headers['Content-Type'] . "\n" .
             $this->headers['Date'] . "\n" .
-            'x-cms-api-version:1.0'."\n".'x-cms-ip:192.168.1.1'."\n".'x-cms-signature:hmac-sha1'.
+            'x-cms-api-version:1.0'."\n".'x-cms-ip:'.$this->sourceIp."\n".'x-cms-signature:hmac-sha1'."\n".
             $this->request->path;
-        $this->signature = base64_encode(hash_hmac("sha1", $stringToSign, $this->accessSecret, true));
+//        print $stringToSign."\n";
+        $this->signature = strtoupper(bin2hex(hash_hmac("sha1", $stringToSign, $this->accessSecret, true)));
     }
 
     protected function getPostParameters(){
@@ -71,14 +73,14 @@ class MetrichubCmsClient
 
     protected function buildHeaders(){
         $this->headers = array(
-            'Accept'=> "application/json",
             'Content-Type' => "application/json",
-            'Content-Encoding' => "gzip",
             'x-cms-api-version' => '1.0',
             'Date' => gmdate("D, d M Y H:i:s \G\M\T"),
             'x-cms-signature' => 'hmac-sha1',
-            'x-cms-ip'=>'192.168.1.1',
-            'Content-MD5'=>md5($this->request->getContent()),
+            'x-cms-ip'=>$this->sourceIp,
+            'Content-Length'=> strlen($this->request->getContent()),
+            'Content-MD5'=>strtoupper(md5($this->request->getContent())),
+            'Host'=> $this->host,
             'User-Agent'=>'metrichub-cms-php-sdk-v-1.0',
             'Authorization' => ''
         );
@@ -115,7 +117,7 @@ class MetrichubCmsClient
     public function getResponse($request){
         $this->setRequest($request);
         $this->buildHeaders();
-        print_r($this->headers);
+//        print_r($this->headers);
         return $this->httpRequest();
     }
 }

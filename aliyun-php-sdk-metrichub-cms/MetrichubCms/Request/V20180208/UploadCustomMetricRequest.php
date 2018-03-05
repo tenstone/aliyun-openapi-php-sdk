@@ -19,96 +19,28 @@
  */
 namespace MetrichubCms\Request\V20180208;
 
+use MetrichubCms\Request\V20180208\CustomMetric;
+
 class UploadCustomMetricRequest extends \RpcAcsRequest
 {
     public $path;
+
+    private $customMetricArr = array();
 
 	function  __construct()
 	{
 		parent::__construct("MetrichubCms", "2018-02-08", "UploadCustomMetric", "metrichub-cms", "openAPI");
         $this->path = "/metric/custom/upload";
         $this->setMethod('POST');
-        $this->setContent('[{"groupId":101,"metricName":"","dimensions":{"sampleName1":"value1","sampleName2":"value2"},"time":"","type":0,"period":60,"values":{"value":10.5,"Sum":100}}]');
+//        $this->setContent('[{"groupId":101,"metricName":"x","dimensions":{"sampleName1":"value1","sampleName2":"value2"},"time":"","type":0,"period":60,"values":{"value":10.5,"Sum":100}}]');
     }
 
-    private $groupId;
-
-	private $metricName;
-
-	private $dimensions;
-
-	private $time;
-
-	private $type;
-
-	private $period;
-
-	private $values;
-
-
-    public function getGroupId() {
-        return $this->groupId;
+    function append(CustomMetric $customMetric){
+	    array_push($this->customMetricArr, $customMetric->buildArr());
     }
 
-    public function setGroupId($groupId) {
-        $this->groupId = $groupId;
-        $this->queryParameters["GroupId"]=$groupId;
+    function buildBody(){
+        $this->setContent(json_encode($this->customMetricArr));
     }
 
-    public function getMetricName() {
-        return $this->metricName;
-    }
-
-    public function setMetricName($metricName) {
-        $this->metricName = $metricName;
-        $this->queryParameters["metricName"]=$metricName;
-    }
-
-    public function getDimensions() {
-        return $this->dimensions;
-    }
-
-    public function setDimensions($dimensions) {
-        $this->dimensions = $dimensions;
-        $this->queryParameters["dimensions"]=$dimensions;
-    }
-
-
-    public function getTime() {
-        return $this->time;
-    }
-
-    public function setTime($time) {
-        $this->dimensions = $time;
-        $this->queryParameters["time"]=$time;
-    }
-
-
-    public function getType() {
-        return $this->type;
-    }
-
-    public function setType($type) {
-        $this->dimensions = $type;
-        $this->queryParameters["type"]=$type;
-    }
-
-    public function getPeriod(){
-        return $this->period;
-    }
-
-    public function setPeriod($period){
-        $this->period = $period;
-        $this->queryParameters["period"]=$period;
-    }
-
-
-    public function getValues(){
-        return $this->values;
-    }
-
-    public function setValues($values){
-        $this->period = $values;
-        $this->queryParameters["values"]=$values;
-    }
 }
