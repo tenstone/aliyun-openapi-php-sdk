@@ -17,9 +17,9 @@ class CustomMetric
 
     const PERIOD_5M = 300;
 
-    const TYPE_ZERO = 0;
+    const TYPE_VALUE = 0;
 
-    const TYPE_ONE = 1;
+    const TYPE_AGG = 1;
 
     private $groupId;
 
@@ -97,6 +97,14 @@ class CustomMetric
             throw new \Exception('values must be an array.');
         }
         $this->values = $values;
+    }
+
+    public function appendDimension($key, $value){
+        array_push($this->dimensions,array($key => $value));
+    }
+
+    public function appendValue($key, $value){
+        array_push($this->values,array($key=>$value));
     }
 
     function buildArr(){

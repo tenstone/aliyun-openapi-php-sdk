@@ -35,7 +35,7 @@ class UploadCustomMetricRequest extends \RpcAcsRequest
 //        $this->setContent('[{"groupId":101,"metricName":"x","dimensions":{"sampleName1":"value1","sampleName2":"value2"},"time":"","type":0,"period":60,"values":{"value":10.5,"Sum":100}}]');
     }
 
-    function append(CustomMetric $customMetric){
+    function setCustomMetricData(CustomMetric $customMetric){
 	    array_push($this->customMetricArr, $customMetric->buildArr());
     }
 

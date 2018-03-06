@@ -36,12 +36,12 @@ class MetrichubCmsClient
     protected $sourceIp;
 
 
-    function __construct($regionId, $accessId,$accessSecret,$sourceIp)
+    function __construct($endpoint, $accessId,$accessSecret,$sourceIp)
     {
         $this->accessId = $accessId;
         $this->accessSecret = $accessSecret;
 
-        $this->host = "metrichub-cms-{$regionId}.aliyuncs.com";
+        $this->host = "";
         $this->sourceIp = $sourceIp;
     }
 
