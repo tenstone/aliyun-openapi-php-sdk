@@ -7,6 +7,7 @@
  */
 
 namespace MetrichubCms\Request\V20180208;
+use MetrichubCms\Request\V20180208\MetricAttribute;
 
 
 class CustomMetric
@@ -100,14 +101,21 @@ class CustomMetric
     }
 
     public function appendDimension($key, $value){
-        array_push($this->dimensions,array($key => $value));
+        $this->dimensions[$key] = $value;
     }
 
     public function appendValue($key, $value){
-        array_push($this->values,array($key=>$value));
+        $this->values[$key] = $value;
+    }
+
+    public function checkPeriod(){
+        if($this->getType()==1 && $this->getPeriod()==CustomMetric::PERIOD_15S){
+            throw new \Exception('unsupported period value.');
+        }
     }
 
     function buildArr(){
+        $this->checkPeriod();
         return [
             'groupId' => $this->getGroupId(),
             'period'  => $this->getPeriod(),

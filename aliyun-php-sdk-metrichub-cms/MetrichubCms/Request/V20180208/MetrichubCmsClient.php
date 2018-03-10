@@ -41,7 +41,7 @@ class MetrichubCmsClient
         $this->accessId = $accessId;
         $this->accessSecret = $accessSecret;
 
-        $this->host = "";
+        $this->host = $endpoint;
         $this->sourceIp = $sourceIp;
     }
 
