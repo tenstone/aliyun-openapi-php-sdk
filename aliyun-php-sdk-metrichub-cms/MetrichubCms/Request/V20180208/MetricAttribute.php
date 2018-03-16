@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: liuyuancheng
- * Date: 06/03/2018
- * Time: 4:26 PM
- */
 
 namespace MetrichubCms\Request\V20180208;
 
